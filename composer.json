@@ -1,0 +1,22 @@
+{
+    "name": "kenbarbour/csv-parser",
+    "description": "Parser for text files such as CSV files",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^5.6"
+    },
+    "license": "GNUGPLv2",
+    "authors": [
+        {
+            "name": "Kenneth Barbour",
+            "email": "kenbarbour@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "KenBarbour\\Util\\CSVParser\\": "src/",
+            "KenBarbour\\Util\\CSVParser\\Test\\": "test/"
+        }
+    }
+}
