@@ -99,7 +99,7 @@ class CSVParser
         }
         $data = array();
         foreach ($line as $key => $value) {
-            $data[$this->get_heading_at_index($key)] = $value;
+            $data[$this->get_heading_at_index($key)] = $this->translate_special_chars($value);
         }
         return $data;
     }
@@ -130,5 +130,11 @@ class CSVParser
             }
         }
         return $heading;
+    }
+
+    protected function translate_special_chars($value)
+    {
+        if ($value == '\N') return null;
+        return $value;
     }
 }

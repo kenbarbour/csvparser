@@ -46,4 +46,19 @@ class CSVParserTest extends TestCase
         $this->assertArrayNotHasKey('Heading2',$line);
         $this->assertArrayNotHasKey('Heading3',$line);
     }
+
+    function testNullElements()
+    {
+        $str = "\"Heading1\",\"Heading2\",\"Null\"\n1,2,\\N";
+        $parser = new CSVParser();
+        $parser->fromString($str)
+            ->hasHeader();
+        $line = $parser->fetch();
+        $this->assertArrayHasKey('Heading1',$line);
+        $this->assertArrayHasKey('Heading2',$line);
+        $this->assertArrayHasKey('Null',$line);
+        $this->assertEquals(1,$line['Heading1']);
+        $this->assertEquals(2,$line['Heading2']);
+        $this->assertNull($line['Null']);
+    }
 }
